@@ -8,12 +8,22 @@ class ScreenPage extends StatefulWidget {
 }
 
 class _ScreenPageState extends State<ScreenPage> {
+  List<IconData> bottomNavIcons = [
+    Icons.house,
+    Icons.theaters,
+    Icons.add_box,
+    Icons.shopping_cart,
+    Icons.person,
+  ];
+
+  int selectedIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        actionsIconTheme: IconThemeData(color: Colors.lightBlue),
+        actionsIconTheme: IconThemeData(color: Colors.black),
         backgroundColor: Colors.white,
         elevation: 0,
         title: const Text(
@@ -44,6 +54,24 @@ class _ScreenPageState extends State<ScreenPage> {
             ),
           ),
         ],
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        unselectedIconTheme: const IconThemeData(color: Colors.black),
+        selectedIconTheme: const IconThemeData(color: Colors.black),
+        items: List.generate(
+          bottomNavIcons.length,
+          (index) => BottomNavigationBarItem(
+            icon: Icon(bottomNavIcons[index]),
+            label: '',
+          ),
+        ),
+        currentIndex: selectedIndex,
+        onTap: (newIndex) {
+          setState(() {
+            selectedIndex = newIndex;
+          });
+        },
       ),
     );
   }
