@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:instagram/pages/time_line_page.dart';
 
 class ScreenPage extends StatefulWidget {
   const ScreenPage({Key? key}) : super(key: key);
@@ -16,6 +17,14 @@ class _ScreenPageState extends State<ScreenPage> {
     Icons.person,
   ];
 
+  List<Widget> pages = const [
+    TimeLinePage(),
+    TimeLinePage(),
+    TimeLinePage(),
+    TimeLinePage(),
+    TimeLinePage(),
+  ];
+
   int selectedIndex = 0;
 
   @override
@@ -23,7 +32,7 @@ class _ScreenPageState extends State<ScreenPage> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        actionsIconTheme: IconThemeData(color: Colors.black),
+        actionsIconTheme: const IconThemeData(color: Colors.black),
         backgroundColor: Colors.white,
         elevation: 0,
         title: const Text(
@@ -55,7 +64,9 @@ class _ScreenPageState extends State<ScreenPage> {
           ),
         ],
       ),
+      body: pages[selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Colors.white,
         type: BottomNavigationBarType.fixed,
         unselectedIconTheme: const IconThemeData(color: Colors.black),
         selectedIconTheme: const IconThemeData(color: Colors.black),
